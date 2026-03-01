@@ -18,7 +18,17 @@ class FoodMenuCategoryResource extends Resource
 {
     protected static ?string $model = FoodMenuCategory::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedSquares2x2;
+
+    protected static ?string $navigationLabel = 'Categories';
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Menu';
+
+    protected static ?int $navigationSort = 1;
+
+    protected static ?string $modelLabel = 'Category';
+
+    protected static ?string $pluralModelLabel = 'Categories';
 
     public static function form(Schema $schema): Schema
     {

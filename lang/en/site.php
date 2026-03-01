@@ -103,6 +103,12 @@ return [
     'menu_page' => [
         'title' => 'Full Menu',
         'subtitle' => 'Explore our complete selection. Updated from our menu source with fallback for reliability.',
+        'quick_nav_title' => 'Jump to category',
+        'quick_nav_aria' => 'Quick menu category navigation',
+        'food_title' => 'Food Categories',
+        'food_subtitle' => 'Starters, mains, vegetarian dishes, breads, and desserts.',
+        'drinks_title' => 'Drink Categories',
+        'drinks_subtitle' => 'Aperitifs, wines, beers, soft drinks, coffee, and more.',
         'empty' => 'Menu data is currently unavailable.',
         'allergies_title' => 'Allergies',
         'intolerances_title' => 'Food Intolerances',

@@ -18,7 +18,17 @@ class FoodAllergyResource extends Resource
 {
     protected static ?string $model = FoodAllergy::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedExclamationTriangle;
+
+    protected static ?string $navigationLabel = 'Allergies';
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Dietary Info';
+
+    protected static ?int $navigationSort = 1;
+
+    protected static ?string $modelLabel = 'Allergy';
+
+    protected static ?string $pluralModelLabel = 'Allergies';
 
     public static function form(Schema $schema): Schema
     {

@@ -103,6 +103,12 @@ return [
     'menu_page' => [
         'title' => 'Vollstaendige Speisekarte',
         'subtitle' => 'Entdecken Sie unsere gesamte Auswahl. Aktualisiert aus der Menuquelle mit sicherem Fallback.',
+        'quick_nav_title' => 'Zur Kategorie springen',
+        'quick_nav_aria' => 'Schnellnavigation fuer Menukategorien',
+        'food_title' => 'Speisen-Kategorien',
+        'food_subtitle' => 'Vorspeisen, Hauptgerichte, vegetarische Gerichte, Brot und Desserts.',
+        'drinks_title' => 'Getraenke-Kategorien',
+        'drinks_subtitle' => 'Aperitifs, Weine, Biere, Softdrinks, Kaffee und mehr.',
         'empty' => 'Menudaten sind derzeit nicht verfuegbar.',
         'allergies_title' => 'Allergene',
         'intolerances_title' => 'Lebensmittelunvertraeglichkeiten',

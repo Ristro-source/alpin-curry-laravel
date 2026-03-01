@@ -24,6 +24,9 @@
                             <img src="{{ asset($item['image']) }}" alt="{{ __('site.home.signature_image_alt', ['name' => $itemName]) }}">
                             <div class="menu-card-body">
                                 <h3>{{ $itemName }}</h3>
+                                @if (! empty($item['section_title']))
+                                    <p class="menu-card-category">{{ $item['section_title'] }}</p>
+                                @endif
                                 <p>{{ $item['description'] !== '' ? $item['description'] : __('site.home.signature_fallback_description') }}</p>
                                 <div class="meta">
                                     <span class="pill pill-spice">{{ __('site.home.signature_badge') }}</span>

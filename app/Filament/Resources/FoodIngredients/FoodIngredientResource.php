@@ -18,7 +18,17 @@ class FoodIngredientResource extends Resource
 {
     protected static ?string $model = FoodIngredient::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedSparkles;
+
+    protected static ?string $navigationLabel = 'Ingredients';
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Dietary Info';
+
+    protected static ?int $navigationSort = 3;
+
+    protected static ?string $modelLabel = 'Ingredient';
+
+    protected static ?string $pluralModelLabel = 'Ingredients';
 
     public static function form(Schema $schema): Schema
     {

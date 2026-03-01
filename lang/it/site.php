@@ -103,6 +103,12 @@ return [
     'menu_page' => [
         'title' => 'Menu Completo',
         'subtitle' => 'Esplora tutta la selezione. Aggiornato dalla nostra fonte menu con fallback affidabile.',
+        'quick_nav_title' => 'Vai alla categoria',
+        'quick_nav_aria' => 'Navigazione rapida categorie menu',
+        'food_title' => 'Categorie Cibo',
+        'food_subtitle' => 'Antipasti, piatti principali, vegetariani, pane e dessert.',
+        'drinks_title' => 'Categorie Bevande',
+        'drinks_subtitle' => 'Aperitivi, vini, birre, soft drink, caffe e altro.',
         'empty' => 'I dati del menu non sono disponibili al momento.',
         'allergies_title' => 'Allergeni',
         'intolerances_title' => 'Intolleranze Alimentari',

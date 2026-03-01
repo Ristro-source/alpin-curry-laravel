@@ -169,6 +169,11 @@ class PageController extends Controller
         $flattened = [];
 
         foreach ($menuSections as $section) {
+            $sectionType = strtolower(trim((string) ($section['type'] ?? 'food')));
+            if ($sectionType === 'drink') {
+                continue;
+            }
+
             $sectionTitle = trim((string) ($section['title'] ?? ''));
             $items = $section['items'] ?? [];
 
