@@ -1,0 +1,538 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   ALPIN CURRY — 3D & Animation Enhancement Layer
+   Loaded after alpin-curry-site.css. Adds depth, motion & atmosphere.
+   All effects respect prefers-reduced-motion.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Keyframe Library ────────────────────────────────────────────────────── */
+
+@keyframes floatY {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-10px); }
+}
+
+@keyframes floatOrb {
+    0%, 100% { transform: translateY(0px)  scale(1)    rotate(0deg); }
+    33%       { transform: translateY(-28px) scale(1.07) rotate(120deg); }
+    66%       { transform: translateY(14px)  scale(0.95) rotate(240deg); }
+}
+
+@keyframes floatOrbSlow {
+    0%, 100% { transform: translateY(0px)   scale(1); }
+    40%       { transform: translateY(-18px) scale(1.05); }
+    70%       { transform: translateY(10px)  scale(0.97); }
+}
+
+@keyframes shimmerText {
+    0%   { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+@keyframes eyebrowGlow {
+    0%, 100% { box-shadow: 0 0  0px 0px color-mix(in srgb, var(--saffron) 0%,  transparent); }
+    50%       { box-shadow: 0 0 18px 4px color-mix(in srgb, var(--saffron) 22%, transparent); }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes grain {
+    0%,  100% { transform: translate(0, 0); }
+    10%        { transform: translate(-2%, -3%); }
+    20%        { transform: translate(-5%,  2%); }
+    30%        { transform: translate( 3%, -5%); }
+    40%        { transform: translate(-3%,  4%); }
+    50%        { transform: translate(-1%, -1%); }
+    60%        { transform: translate( 5%,  3%); }
+    70%        { transform: translate( 3%, -2%); }
+    80%        { transform: translate(-4%, -4%); }
+    90%        { transform: translate( 4%,  2%); }
+}
+
+/* ── Subtle animated grain on body overlay ───────────────────────────────── */
+
+body::before {
+    animation: grain 7s steps(1, end) infinite;
+}
+
+/* ── Cursor glow (appended to body by JS) ────────────────────────────────── */
+
+.cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        color-mix(in srgb, var(--saffron) 7%, transparent) 0%,
+        transparent 65%
+    );
+    pointer-events: none;
+    z-index: 0;
+    will-change: transform;
+    mix-blend-mode: multiply;
+}
+
+/* ── Topbar — slide-down entrance ────────────────────────────────────────── */
+
+.topbar {
+    animation: fadeInDown 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* ── Nav links — underline slide ─────────────────────────────────────────── */
+
+.nav a {
+    position: relative;
+    transition: color 0.22s ease;
+}
+
+.nav a::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--brand);
+    transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.nav a:hover {
+    color: var(--brand-deep);
+}
+
+.nav a:hover::after,
+.nav a[aria-current="page"]::after {
+    width: 100%;
+}
+
+.lang-link {
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+                transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.lang-link:hover:not(.is-active) {
+    transform: translateY(-2px);
+    background: color-mix(in srgb, var(--brand) 10%, transparent);
+    border-color: color-mix(in srgb, var(--brand) 35%, transparent);
+    color: var(--brand-deep);
+}
+
+/* ── Hero — atmospheric orbs ─────────────────────────────────────────────── */
+
+.hero {
+    position: relative;
+    isolation: isolate;
+}
+
+/* Warm saffron orb — upper right */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: -100px;
+    right: -70px;
+    width: 440px;
+    height: 440px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        color-mix(in srgb, var(--saffron) 18%, transparent),
+        transparent 68%
+    );
+    animation: floatOrb 9s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Leaf green orb — lower left */
+.hero::after {
+    content: "";
+    position: absolute;
+    bottom: -70px;
+    left: -90px;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        color-mix(in srgb, var(--leaf) 14%, transparent),
+        transparent 68%
+    );
+    animation: floatOrbSlow 12s ease-in-out infinite reverse;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* ── H1 — gradient shimmer text ──────────────────────────────────────────── */
+
+h1 {
+    background: linear-gradient(
+        115deg,
+        var(--brand-deep) 0%,
+        var(--brand)      25%,
+        var(--saffron)    50%,
+        var(--brand)      75%,
+        var(--brand-deep) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmerText 5s linear infinite;
+}
+
+/* ── Section h2 — warm gradient ──────────────────────────────────────────── */
+
+.section h2 {
+    background: linear-gradient(
+        118deg,
+        var(--brand-deep) 0%,
+        var(--brand)      60%,
+        var(--saffron)    100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ── Eyebrow badge — glow pulse ──────────────────────────────────────────── */
+
+.eyebrow {
+    animation: eyebrowGlow 3.5s ease-in-out infinite;
+}
+
+/* ── Hero media — floating animation + 3D feel ───────────────────────────── */
+
+.hero-media {
+    animation: floatY 5.5s ease-in-out infinite;
+    will-change: transform;
+    box-shadow:
+        var(--shadow),
+        0 0 0 1px color-mix(in srgb, var(--brand) 14%, transparent),
+        0 40px 80px color-mix(in srgb, var(--brand-deep) 20%, transparent);
+}
+
+/* Hero badge — glassmorphism */
+.hero-badge {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: color-mix(in srgb, #1a0a05 68%, transparent);
+    border-color: rgba(255, 255, 255, 0.18);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.38),
+        inset 0 1px 0 rgba(255, 255, 255, 0.10);
+}
+
+/* ── Chips — glassmorphism ───────────────────────────────────────────────── */
+
+.chip {
+    background: rgba(255, 255, 255, 0.50);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-color: rgba(255, 255, 255, 0.65);
+    box-shadow:
+        0 8px 32px color-mix(in srgb, var(--ink) 6%, transparent),
+        inset 0 1px 0 rgba(255, 255, 255, 0.85);
+    transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.22s ease;
+    will-change: transform;
+}
+
+/* ── Buttons — spring + shimmer ──────────────────────────────────────────── */
+
+.btn {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.22s ease !important;
+}
+
+.btn:active {
+    transform: translateY(2px) scale(0.97) !important;
+    transition-duration: 0.08s !important;
+}
+
+/* Shine sweep on primary button */
+.btn-primary::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        105deg,
+        transparent       20%,
+        rgba(255,255,255,0.24) 50%,
+        transparent       80%
+    );
+    transform: translateX(-220%);
+    transition: transform 0.6s ease;
+    pointer-events: none;
+}
+
+.btn-primary:hover::after {
+    transform: translateX(220%);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 22px 44px color-mix(in srgb, var(--brand-deep) 45%, transparent) !important;
+}
+
+.btn-ghost:hover {
+    background: color-mix(in srgb, var(--card) 80%, transparent);
+    border-color: color-mix(in srgb, var(--leaf) 55%, transparent);
+    transform: translateY(-3px);
+}
+
+/* ── Menu Grid — 3D perspective container ────────────────────────────────── */
+
+.menu-grid {
+    perspective: 1400px;
+}
+
+/* Cards get 3D tilt via JS; these are defaults + transition resets */
+.menu-card {
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+}
+
+.menu-card:hover {
+    border-color: color-mix(in srgb, var(--saffron) 45%, var(--line) 55%);
+}
+
+/* Image zoom on hover */
+.menu-card img {
+    transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+}
+
+.menu-card:hover img {
+    transform: scale(1.07);
+}
+
+/* ── Story section ───────────────────────────────────────────────────────── */
+
+.story-media {
+    will-change: transform;
+    overflow: hidden;
+}
+
+.story-media img {
+    transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+}
+
+.story-media:hover img {
+    transform: scale(1.04);
+}
+
+.story-card {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    background: linear-gradient(
+        140deg,
+        rgba(255, 247, 236, 0.94),
+        rgba(249, 236, 218, 0.88)
+    );
+    box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.story-points li {
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.story-points li:hover {
+    transform: translateX(5px);
+    color: var(--brand-deep);
+}
+
+/* ── FAQ — smooth accordion ──────────────────────────────────────────────── */
+
+.faq-item {
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.faq-item:hover {
+    border-color: color-mix(in srgb, var(--brand) 28%, var(--line) 72%);
+    box-shadow: 0 14px 30px color-mix(in srgb, var(--ink) 9%, transparent);
+}
+
+.faq-item[open] {
+    border-color: color-mix(in srgb, var(--brand) 22%, var(--line) 78%);
+}
+
+.faq-item summary {
+    transition: color 0.2s ease;
+}
+
+.faq-item summary:hover {
+    color: var(--brand);
+}
+
+/* JS wraps the <p> in .faq-content for height transitions */
+.faq-content {
+    overflow: hidden;
+    transition:
+        max-height 0.40s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        opacity    0.33s ease;
+}
+
+/* ── Contact section — inner glow ────────────────────────────────────────── */
+
+.contact-wrap {
+    position: relative;
+    isolation: isolate;
+}
+
+.contact-wrap::before {
+    content: "";
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(
+        ellipse,
+        color-mix(in srgb, var(--saffron) 10%, transparent),
+        transparent 70%
+    );
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ── Gallery cards ───────────────────────────────────────────────────────── */
+
+.gallery-card {
+    transition: transform 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.28s ease;
+    overflow: hidden;
+}
+
+.gallery-card:hover {
+    transform: translateY(-7px) scale(1.012);
+    box-shadow: 0 24px 50px color-mix(in srgb, var(--ink) 16%, transparent);
+}
+
+.gallery-card img {
+    transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+}
+
+.gallery-card:hover img {
+    transform: scale(1.08);
+}
+
+/* ── WhatsApp FAB — spring bounce ────────────────────────────────────────── */
+
+.whatsapp-fab {
+    transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.28s ease !important;
+}
+
+.whatsapp-fab:hover {
+    transform: translateY(-5px) scale(1.07) !important;
+    box-shadow: 0 22px 44px rgba(0, 0, 0, 0.32) !important;
+}
+
+/* ── Menu row — hover nudge ──────────────────────────────────────────────── */
+
+.menu-row {
+    transition: background 0.2s ease, padding-left 0.22s ease;
+    border-radius: 0.5rem;
+}
+
+.menu-row:hover {
+    background: color-mix(in srgb, var(--saffron) 6%, transparent);
+    padding-left: 0.5rem;
+}
+
+/* ── Form field — focus glow ─────────────────────────────────────────────── */
+
+.field input,
+.field select,
+.field textarea {
+    transition: border-color 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+}
+
+/* ── Directional reveal variants ─────────────────────────────────────────── */
+
+/* Existing .reveal = fade up. New directional variants: */
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-32px);
+    transition:
+        opacity   680ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        transform 680ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(32px);
+    transition:
+        opacity   680ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        transform 680ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal-scale {
+    opacity: 0;
+    transform: scale(0.90);
+    transition:
+        opacity   680ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        transform 680ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.reveal-left.active,
+.reveal-right.active  { opacity: 1; transform: translateX(0); }
+.reveal-scale.active  { opacity: 1; transform: scale(1); }
+
+/* ── Legal card hover ────────────────────────────────────────────────────── */
+
+.legal-card {
+    transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.25s ease;
+}
+
+.legal-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 36px color-mix(in srgb, var(--ink) 12%, transparent);
+}
+
+/* ── Chip stagger delays (hero cards) ────────────────────────────────────── */
+
+.hero-cards .chip:nth-child(2) { transition-delay: 80ms; }
+.hero-cards .chip:nth-child(3) { transition-delay: 160ms; }
+
+/* ── Reduced motion: disable everything ─────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+    body::before              { animation: none !important; }
+    .hero::before,
+    .hero::after              { animation: none !important; }
+    .hero-media               { animation: none !important; }
+    .topbar                   { animation: none !important; }
+    .eyebrow                  { animation: none !important; }
+    h1                        { animation: none !important; -webkit-text-fill-color: var(--ink); background: none; }
+    .section h2               { -webkit-text-fill-color: var(--brand-deep); background: none; }
+    .cursor-glow              { display: none !important; }
+
+    .btn,
+    .chip,
+    .menu-card,
+    .gallery-card,
+    .legal-card,
+    .story-points li,
+    .lang-link,
+    .whatsapp-fab,
+    .nav a                    { transition: none !important; }
+
+    .menu-card img,
+    .gallery-card img,
+    .story-media img          { transition: none !important; }
+}

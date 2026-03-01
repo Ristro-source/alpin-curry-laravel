@@ -49,10 +49,10 @@
 
         <section class="section">
             <div class="container story">
-                <div class="story-media reveal">
+                <div class="story-media reveal-left">
                     <img src="{{ asset('assets/images/dishes/rise-with-curries.png') }}" alt="{{ __('site.home.story_image_alt') }}">
                 </div>
-                <article class="story-card reveal" style="transition-delay: 120ms;">
+                <article class="story-card reveal-right" style="transition-delay: 120ms;">
                     <div class="section-head" style="margin-bottom: 0.9rem;">
                         <h2>{{ __('site.sections.story_title') }}</h2>
                         <p>{{ __('site.sections.story_text') }}</p>
