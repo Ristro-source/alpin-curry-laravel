@@ -192,6 +192,7 @@ return [
         'terms_text' => 'Conditions governing the use of this website and related services.',
         'impressum_title' => 'Impressum',
         'impressum_text' => 'Alpin Curry, Corso della Liberta 103, 39012 Merano, Italy.',
+        'last_updated' => 'Last updated',
     ],
     'footer' => [
         'line_1' => 'Alpin Curry, Merano',

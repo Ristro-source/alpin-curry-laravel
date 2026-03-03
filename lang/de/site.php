@@ -192,6 +192,7 @@ return [
         'terms_text' => 'Bedingungen fuer die Nutzung dieser Website und der zugehoerigen Dienste.',
         'impressum_title' => 'Impressum',
         'impressum_text' => 'Alpin Curry, Corso della Liberta 103, 39012 Meran, Italien.',
+        'last_updated' => 'Zuletzt aktualisiert am',
     ],
     'footer' => [
         'line_1' => 'Alpin Curry, Meran',
