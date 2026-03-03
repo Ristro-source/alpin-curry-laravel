@@ -146,3 +146,41 @@
         </section>
     </main>
 @endsection
+
+@push('scripts')
+@php
+    $menuSchema = [
+        '@context' => 'https://schema.org',
+        '@type'    => 'Menu',
+        'name'     => __('site.menu_page.title'),
+        'url'      => url()->current(),
+        'inLanguage' => app()->getLocale(),
+        'hasMenuSection' => array_map(static function (array $section): array {
+            return [
+                '@type' => 'MenuSection',
+                'name'  => $section['title'] ?? '',
+                'hasMenuItem' => array_map(static function (array $item): array {
+                    $entry = [
+                        '@type' => 'MenuItem',
+                        'name'  => $item['name'] ?? '',
+                    ];
+                    if (!empty($item['description'])) {
+                        $entry['description'] = $item['description'];
+                    }
+                    if (!empty($item['price'])) {
+                        $entry['offers'] = [
+                            '@type'         => 'Offer',
+                            'price'         => preg_replace('/[^\d.,]/', '', (string) $item['price']),
+                            'priceCurrency' => 'EUR',
+                        ];
+                    }
+                    return $entry;
+                }, $section['items'] ?? []),
+            ];
+        }, $menuSections),
+    ];
+@endphp
+<script type="application/ld+json">
+    {!! json_encode($menuSchema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}
+</script>
+@endpush

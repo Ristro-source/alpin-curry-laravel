@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://alpin-curry.it/sitemap.xml
+# Block admin and internal routes
+Disallow: /admin
+Disallow: /admin/
+Disallow: /livewire/
+Disallow: /sanctum/
+
+Sitemap: https://alpincurry.it/sitemap.xml

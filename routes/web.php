@@ -6,10 +6,12 @@ use App\Http\Controllers\MenuPreviewController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\SitemapController;
 use App\Http\Middleware\SetLocale;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => redirect('/en'));
+Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
 
 Route::middleware(['web', 'auth'])->prefix('admin')->group(function (): void {
     Route::get('/menu-preview', [MenuPreviewController::class, 'html'])->name('admin.menu-preview');
