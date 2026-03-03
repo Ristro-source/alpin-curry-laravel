@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\LegacyMenuController;
+use App\Http\Controllers\MenuDataApiController;
 use App\Http\Controllers\MenuPreviewController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ContactController;
@@ -12,6 +14,9 @@ Route::get('/', fn () => redirect('/en'));
 Route::middleware(['web', 'auth'])->prefix('admin')->group(function (): void {
     Route::get('/menu-preview', [MenuPreviewController::class, 'html'])->name('admin.menu-preview');
     Route::get('/menu-download', [MenuPreviewController::class, 'pdf'])->name('admin.menu-download');
+    Route::get('/legacy-food-menu', [LegacyMenuController::class, 'food'])->name('admin.legacy-food-menu');
+    Route::get('/legacy-drinks-menu', [LegacyMenuController::class, 'drinks'])->name('admin.legacy-drinks-menu');
+    Route::get('/menu-data', MenuDataApiController::class)->name('admin.menu-data');
 });
 
 Route::pattern('locale', 'en|it|de');

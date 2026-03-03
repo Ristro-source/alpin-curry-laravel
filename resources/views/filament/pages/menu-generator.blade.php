@@ -334,6 +334,8 @@
         showPhone:       true,
         footerNote:      'All prices include VAT. Please inform our staff of any allergies.',
         paperSize:       'A4',
+        repeatHeader:    false,
+        autoOrganize:    false,
 
         toggleLang(lang) {
             const idx = this.langs.indexOf(lang);
@@ -363,6 +365,8 @@
                 phone:         this.showPhone   ? '1' : '0',
                 footer:        this.footerNote,
                 paper:         this.paperSize,
+                repeatHeader:  this.repeatHeader ? '1' : '0',
+                autoOrganize:  this.autoOrganize ? '1' : '0',
                 _t:            Date.now(),
             }).toString();
         },
@@ -385,6 +389,8 @@
                 phone:         this.showPhone   ? '1' : '0',
                 footer:        this.footerNote,
                 paper:         this.paperSize,
+                repeatHeader:  this.repeatHeader ? '1' : '0',
+                autoOrganize:  this.autoOrganize ? '1' : '0',
             }).toString();
         },
 
@@ -628,6 +634,26 @@
                 <option value="A5">A5 — 148 × 210 mm</option>
                 <option value="Letter">Letter — 8.5 × 11 in</option>
             </x-filament::input.select>
+
+            <div class="mg-divider" style="margin-top:0.875rem;"></div>
+
+            <div class="mg-toggle-row">
+                <span class="mg-toggle-label">Repeat header on all PDF pages</span>
+                <button type="button" role="switch" class="mg-toggle"
+                    :aria-checked="repeatHeader.toString()" @click="repeatHeader = !repeatHeader">
+                    <span class="mg-toggle-knob"></span>
+                </button>
+            </div>
+            <div class="mg-toggle-row" style="align-items:flex-start;">
+                <div>
+                    <span class="mg-toggle-label">Auto-organize categories</span>
+                    <p style="font-size:0.7rem;color:rgb(107 114 128);margin-top:0.1rem;line-height:1.35;">Groups dual-view categories side by side (food | drink)</p>
+                </div>
+                <button type="button" role="switch" class="mg-toggle" style="margin-top:0.15rem;"
+                    :aria-checked="autoOrganize.toString()" @click="autoOrganize = !autoOrganize">
+                    <span class="mg-toggle-knob"></span>
+                </button>
+            </div>
         </x-filament::section>
 
     </aside>

@@ -18,6 +18,9 @@
     $layoutClass     = 'layout-' . $layout;
     $colorClass      = 'colors-' . ($config['colors']     ?? 'brand');
     $pageWidthClass  = 'pg-'     . ($config['pageWidth']  ?? 'standard');
+    $autoOrganize    = (bool) ($config['autoOrganize']    ?? false);
+    $repeatHeader    = (bool) ($config['repeatHeader']    ?? false);
+    $isPdf           = (bool) ($isPdf ?? false);
 
     // EU 14 allergen icon map: slugged key → [CSS modifier, 2-letter code, full label]
     $allergenIconMap = [
@@ -62,7 +65,7 @@
     $primaryLang = $config['lang'] ?? 'en';
     $extraLangs  = array_slice($config['langs'] ?? [], 1);
 @endphp
-<body class="{{ $layoutClass }} {{ $colorClass }} {{ $paperClass }} {{ $pageWidthClass }}">
+<body class="{{ $layoutClass }} {{ $colorClass }} {{ $paperClass }} {{ $pageWidthClass }} {{ $repeatHeader ? 'repeat-header' : '' }}">
 
 {{-- Screen-only white card wrapper --}}
 <div class="mp-doc">
@@ -92,119 +95,53 @@
 </header>
 
 {{-- ── MENU SECTIONS ── --}}
-@forelse($sections as $section)
-    @php $items = $section['items'] ?? []; @endphp
+@if($autoOrganize)
+    {{-- Single sections always rendered full-width --}}
+    @foreach($singleSections ?? [] as $section)
+        @include('menu-print._section', ['section' => $section, 'displayMode' => 'single'])
+    @endforeach
 
-    <div class="mp-section">
-        <h2 class="mp-section-title">{{ $section['title'] ?? '' }}</h2>
-
-        @if($layout === 'modern')
-            <div class="mp-items-grid">
+    @if(!$isPdf)
+        {{-- Browser preview: true side-by-side two-column table --}}
+        @if(!empty($dualFoodSections) || !empty($dualDrinkSections))
+        <table class="mp-dual-table"><tr>
+            <td class="mp-dual-col">
+                @foreach($dualFoodSections ?? [] as $section)
+                    @include('menu-print._section', ['section' => $section, 'displayMode' => 'dual'])
+                @endforeach
+            </td>
+            <td class="mp-dual-col">
+                @foreach($dualDrinkSections ?? [] as $section)
+                    @include('menu-print._section', ['section' => $section, 'displayMode' => 'dual'])
+                @endforeach
+            </td>
+        </tr></table>
         @endif
-
-        @foreach($items as $item)
-            @php
-                $name         = $item['name']        ?? '';
-                $price        = $item['price']        ?? '';
-                $description  = $item['description']  ?? '';
-                $allTags      = array_merge($item['allergies'] ?? [], $item['intolerances'] ?? []);
-            @endphp
-
-            <div class="mp-item">
-                @if($layout === 'classic')
-                    {{-- ── Classic ── --}}
-                    <div class="mp-item-row">
-                        <span class="mp-item-name">{{ $name }}</span>
-                        <span class="mp-item-dots"></span>
-                        <span class="mp-item-price">{{ $price }}</span>
-                    </div>
-
-                    @if($showDesc && $description !== '')
-                        <p class="mp-item-description">
-                            {{ $description }}
-                            @if($showAlrg && !$showAlrgIcons && count($allTags))
-                                <span class="mp-item-allergy-inline">({{ implode(', ', array_column($allTags, 'key')) }})</span>
-                            @endif
-                        </p>
-                    @elseif($showAlrg && !$showAlrgIcons && count($allTags))
-                        <p class="mp-item-description">
-                            <span class="mp-item-allergy-inline">({{ implode(', ', array_column($allTags, 'key')) }})</span>
-                        </p>
-                    @endif
-
-                    {{-- Allergen icons row (classic) --}}
-                    @if($showAlrg && $showAlrgIcons && count($allTags))
-                        <div class="mp-ai-row">
-                            @foreach($allTags as $tag)
-                                @php [$mod, $code, $lbl] = $getIcon($tag['key'] ?? ''); @endphp
-                                <span class="mp-ai mp-ai-{{ $mod }}" title="{{ $lbl }}">{{ $code }}</span>
-                            @endforeach
-                        </div>
-                    @endif
-
-                    {{-- Extra language descriptions (classic) --}}
-                    @foreach($extraLangs as $eLang)
-                        @php $eDesc = $extraLangDescs[$eLang][$name] ?? ''; @endphp
-                        @if($showDesc && $eDesc !== '')
-                            <p class="mp-item-description mp-lang-desc">
-                                <span class="mp-lang-badge">{{ strtoupper($eLang) }}</span>
-                                {{ $eDesc }}
-                            </p>
-                        @endif
-                    @endforeach
-
-                @else
-                    {{-- ── Elegant & Modern ── --}}
-                    <div class="mp-item-row">
-                        <span class="mp-item-name">{{ $name }}</span>
-                        <span class="mp-item-price">{{ $price }}</span>
-                    </div>
-
-                    @if($showDesc && $description !== '')
-                        <p class="mp-item-description">{{ $description }}</p>
-                    @endif
-
-                    {{-- Extra language descriptions (elegant/modern) --}}
-                    @foreach($extraLangs as $eLang)
-                        @php $eDesc = $extraLangDescs[$eLang][$name] ?? ''; @endphp
-                        @if($showDesc && $eDesc !== '')
-                            <p class="mp-item-description mp-lang-desc">
-                                <span class="mp-lang-badge">{{ strtoupper($eLang) }}</span>
-                                {{ $eDesc }}
-                            </p>
-                        @endif
-                    @endforeach
-
-                    {{-- Allergen icons (elegant/modern) --}}
-                    @if($showAlrg && count($allTags))
-                        @if($showAlrgIcons)
-                            <div class="mp-ai-row">
-                                @foreach($allTags as $tag)
-                                    @php [$mod, $code, $lbl] = $getIcon($tag['key'] ?? ''); @endphp
-                                    <span class="mp-ai mp-ai-{{ $mod }}" title="{{ $lbl }}">{{ $code }}</span>
-                                @endforeach
-                            </div>
-                        @else
-                            <div class="mp-tags">
-                                @foreach($allTags as $tag)
-                                    <span class="mp-tag">{{ $tag['key'] }}</span>
-                                @endforeach
-                            </div>
-                        @endif
-                    @endif
-                @endif
-            </div>
+    @else
+        {{-- PDF: sequential — dompdf cannot reliably render multi-page side-by-side columns --}}
+        @foreach($dualFoodSections ?? [] as $section)
+            @include('menu-print._section', ['section' => $section, 'displayMode' => 'dual'])
         @endforeach
+        @foreach($dualDrinkSections ?? [] as $section)
+            @include('menu-print._section', ['section' => $section, 'displayMode' => 'dual'])
+        @endforeach
+    @endif
 
-        @if($layout === 'modern')
-            </div>{{-- /mp-items-grid --}}
-        @endif
-    </div>
-@empty
-    <p style="text-align:center;color:#999;font-style:italic;margin-top:3rem;">
-        No menu items found. Add items in the admin panel.
-    </p>
-@endforelse
+    @if(empty($singleSections) && empty($dualFoodSections) && empty($dualDrinkSections))
+        <p style="text-align:center;color:#999;font-style:italic;margin-top:3rem;">
+            No menu items found. Add items in the admin panel.
+        </p>
+    @endif
+@else
+    @forelse($sections as $section)
+        @php $displayMode = $section['display_type'] ?? 'dual'; @endphp
+        @include('menu-print._section', ['section' => $section, 'displayMode' => $displayMode])
+    @empty
+        <p style="text-align:center;color:#999;font-style:italic;margin-top:3rem;">
+            No menu items found. Add items in the admin panel.
+        </p>
+    @endforelse
+@endif
 
 {{-- ── FOOTER ── --}}
 @if(!empty($config['footer']) || ($showLegend && !empty($usedAllergens)))

@@ -142,6 +142,7 @@ class MenuCatalogService
                 'description' => $this->resolveDatabaseLocalizedValue($category, $descriptionColumn),
                 'type' => $this->normalizeSectionType((string) $category->type),
                 'order' => (int) $category->order,
+                'display_type' => (string) ($category->display_type ?: 'dual'),
                 'items' => $items,
             ];
         }
@@ -262,6 +263,7 @@ GRAPHQL;
                     $sections[] = [
                         'title' => (string) ($category['name'] ?? ''),
                         'type' => $this->inferSectionType($menuName, (string) ($category['name'] ?? '')),
+                        'display_type' => 'dual',
                         'items' => $items,
                     ];
                 }
@@ -336,6 +338,7 @@ GRAPHQL;
                 $sections[] = [
                     'title' => $menuName !== '' ? $menuName.' - '.$categoryName : $categoryName,
                     'type' => $this->inferSectionType($menuName, $categoryName),
+                    'display_type' => 'dual',
                     'items' => $items,
                 ];
             }
@@ -372,6 +375,7 @@ GRAPHQL;
             $sections[] = [
                 'title' => $title,
                 'type' => $this->inferSectionType('', $title),
+                'display_type' => 'dual',
                 'items' => $items,
             ];
         }

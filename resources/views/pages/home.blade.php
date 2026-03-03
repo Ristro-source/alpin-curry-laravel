@@ -1,11 +1,63 @@
 @extends('layouts.alpin-curry')
 
-@section('title', __('site.brand'))
-@section('meta_description', __('site.hero.text'))
+@section('title', __('site.meta.home_title'))
+@section('meta_description', __('site.meta.home_description'))
+@section('meta_keywords', __('site.meta.home_keywords'))
 
 @section('content')
     <main id="main-content">
         <x-ui.hero :locale="app()->getLocale()" />
+
+        {{-- New: Features Section for High Quality, Veg/Vegan, Bar --}}
+        <section class="section section-features" style="background: var(--brand-white); padding-bottom: 2rem; padding-top: 0;">
+            <div class="container">
+                <div class="feature-grid">
+                    <div class="feature-item reveal" style="transition-delay: 50ms;">
+                        <div class="feature-icon">✨</div>
+                        <h3>{{ __('site.features.quality_title') }}</h3>
+                        <p>{{ __('site.features.quality_text') }}</p>
+                    </div>
+                    <div class="feature-item reveal" style="transition-delay: 150ms;">
+                        <div class="feature-icon">🥦</div>
+                        <h3>{{ __('site.features.veg_vegan_title') }}</h3>
+                        <p>{{ __('site.features.veg_vegan_text') }}</p>
+                    </div>
+                    <div class="feature-item reveal" style="transition-delay: 250ms;">
+                        <div class="feature-icon">🍷</div>
+                        <h3>{{ __('site.features.bar_drinks_title') }}</h3>
+                        <p>{{ __('site.features.bar_drinks_text') }}</p>
+                    </div>
+                </div>
+
+                {{-- Amenities Icons --}}
+                <div class="amenity-grid reveal" style="transition-delay: 350ms; margin-top: 4rem;">
+                    <div class="amenity-item">
+                        <span class="amenity-icon">♿</span>
+                        <span>{{ __('site.amenities.accessible') }}</span>
+                    </div>
+                    <div class="amenity-item">
+                        <span class="amenity-icon">❄️</span>
+                        <span>{{ __('site.amenities.ac') }}</span>
+                    </div>
+                    <div class="amenity-item">
+                        <span class="amenity-icon">🚬</span>
+                        <span>{{ __('site.amenities.smoking') }}</span>
+                    </div>
+                    <div class="amenity-item">
+                        <span class="amenity-icon">🥡</span>
+                        <span>{{ __('site.amenities.takeaway') }}</span>
+                    </div>
+                    <div class="amenity-item">
+                        <span class="amenity-icon">📱</span>
+                        <span>{{ __('site.amenities.online_order') }}</span>
+                    </div>
+                    <div class="amenity-item">
+                        <span class="amenity-icon">🐾</span>
+                        <span>{{ __('site.amenities.pets') }}</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <section class="section">
             <div class="container">
@@ -21,7 +73,7 @@
                                 : $item['name'];
                         @endphp
                         <article class="menu-card reveal" style="transition-delay: {{ ($index + 1) * 70 }}ms;">
-                            <img src="{{ asset($item['image']) }}" alt="{{ __('site.home.signature_image_alt', ['name' => $itemName]) }}">
+                            <img src="{{ asset($item['image']) }}" alt="{{ __('site.home.signature_image_alt', ['name' => $itemName]) }} - Alpin Curry Merano">
                             <div class="menu-card-body">
                                 <h3>{{ $itemName }}</h3>
                                 @if (! empty($item['section_title']))
@@ -36,7 +88,7 @@
                         </article>
                     @empty
                         <article class="menu-card reveal">
-                            <img src="{{ asset('assets/images/dishes/image.png') }}" alt="{{ __('site.home.signature_image_alt', ['name' => __('site.brand')]) }}">
+                            <img src="{{ asset('assets/images/dishes/image.png') }}" alt="{{ __('site.brand') }} - Indian Cuisine Merano">
                             <div class="menu-card-body">
                                 <h3>{{ __('site.brand') }}</h3>
                                 <p>{{ __('site.menu_page.empty') }}</p>
@@ -47,10 +99,10 @@
             </div>
         </section>
 
-        <section class="section">
+        <section class="section" style="background: var(--brand-white-alt);">
             <div class="container story">
                 <div class="story-media reveal-left">
-                    <img src="{{ asset('assets/images/dishes/rise-with-curries.png') }}" alt="{{ __('site.home.story_image_alt') }}">
+                    <img src="{{ asset('assets/images/dishes/rise-with-curries.png') }}" alt="{{ __('site.home.story_image_alt') }} - Authentic Indian Food Merano">
                 </div>
                 <article class="story-card reveal-right" style="transition-delay: 120ms;">
                     <div class="section-head" style="margin-bottom: 0.9rem;">
@@ -67,6 +119,29 @@
                         <li>{{ __('site.home.story_point_3') }}</li>
                     </ul>
                 </article>
+            </div>
+        </section>
+
+        {{-- New: Lunch Section for Students & Workers --}}
+        <section class="section section-lunch">
+            <div class="container">
+                <div class="section-head reveal">
+                    <h2>{{ __('site.lunch.title') }}</h2>
+                    <p>{{ __('site.lunch.subtitle') }}</p>
+                </div>
+
+                <div class="lunch-box">
+                    <div class="lunch-card reveal-left">
+                        <span class="lunch-badge">Nutrient Rich</span>
+                        <h3>{{ __('site.lunch.student_title') }}</h3>
+                        <p>{{ __('site.lunch.student_text') }}</p>
+                    </div>
+                    <div class="lunch-card reveal-right">
+                        <span class="lunch-badge">Quick Service</span>
+                        <h3>{{ __('site.lunch.worker_title') }}</h3>
+                        <p>{{ __('site.lunch.worker_text') }}</p>
+                    </div>
+                </div>
             </div>
         </section>
 

@@ -27,14 +27,16 @@ class MenuPreviewController extends Controller
     {
         $params = $this->parseParams($request);
         $data = $this->buildTemplateData($params);
+        $data['isPdf'] = true;
 
         $pdf = Pdf::loadView('menu-print.template', $data)
             ->setPaper(strtolower($params['paper']), 'portrait')
             ->setOptions([
-                'dpi' => 150,
-                'defaultFont' => 'serif',
-                'isRemoteEnabled' => false,
+                'dpi'               => 150,
+                'defaultFont'       => 'serif',
+                'isRemoteEnabled'   => false,
                 'isHtml5ParserEnabled' => true,
+                'defaultMediaType'  => 'print',   // ignore @media screen — fixes blank overflow pages
             ]);
 
         $filename = 'menu-' . implode('-', $params['langs']) . '-' . $params['layout'] . '.pdf';
@@ -89,6 +91,8 @@ class MenuPreviewController extends Controller
                                      : 'A4',
             'sort'           => $sort,
             'pageWidth'      => $pageWidth,
+            'repeatHeader'   => $request->query('repeatHeader', '0') === '1',
+            'autoOrganize'   => $request->query('autoOrganize', '0') === '1',
         ];
     }
 
@@ -127,6 +131,21 @@ class MenuPreviewController extends Controller
                 $section['items'] = $items;
             }
             unset($section);
+        }
+
+        // Filter out categories with display_type = 'off'
+        $sections = array_values(array_filter($sections, fn ($s) => ($s['display_type'] ?? 'dual') !== 'off'));
+
+        // Build auto-organize splits (single full-width, dual split food|drink)
+        $autoOrganize = (bool) ($params['autoOrganize'] ?? false);
+        if ($autoOrganize) {
+            $singleSections    = array_values(array_filter($sections, fn ($s) => ($s['display_type'] ?? 'dual') === 'single'));
+            $dualFoodSections  = array_values(array_filter($sections, fn ($s) => ($s['display_type'] ?? 'dual') === 'dual' && ($s['type'] ?? '') === 'food'));
+            $dualDrinkSections = array_values(array_filter($sections, fn ($s) => ($s['display_type'] ?? 'dual') === 'dual' && ($s['type'] ?? '') === 'drink'));
+        } else {
+            $singleSections    = [];
+            $dualFoodSections  = [];
+            $dualDrinkSections = [];
         }
 
         // Build extra-language description map (item name → translated description)
@@ -177,13 +196,18 @@ class MenuPreviewController extends Controller
             'pageWidth'      => $params['pageWidth'],
             'langs'          => $params['langs'],
             'lang'           => $params['lang'],
+            'repeatHeader'   => $params['repeatHeader'],
+            'autoOrganize'   => $params['autoOrganize'],
         ];
 
         return [
-            'sections'       => $sections,
-            'config'         => $restaurantConfig,
-            'extraLangDescs' => $extraLangDescs,
-            'usedAllergens'  => $usedAllergens,
+            'sections'          => $sections,
+            'config'            => $restaurantConfig,
+            'extraLangDescs'    => $extraLangDescs,
+            'usedAllergens'     => $usedAllergens,
+            'singleSections'    => $singleSections,
+            'dualFoodSections'  => $dualFoodSections,
+            'dualDrinkSections' => $dualDrinkSections,
         ];
     }
 

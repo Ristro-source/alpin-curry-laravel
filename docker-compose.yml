@@ -17,6 +17,7 @@ services:
                 PHP_EXT_REDIS: "true"
                 PHP_EXT_XDEBUG: "false"
                 ENABLE_HEALTHCHECK: "true"
+                PHP_EXT_GD: "true"
         extra_hosts:
             - "host.docker.internal:host-gateway"
         ports:

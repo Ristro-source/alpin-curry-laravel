@@ -312,6 +312,21 @@ html, body {
         margin: 0 0 1.5rem !important; border-radius: 0 !important;
     }
     a { text-decoration: none; color: inherit; }
+
+    /* ── Compact item / section spacing for print ───────────── */
+    .layout-classic .mp-item  { margin-bottom: 0.4rem  !important; }
+    .layout-elegant .mp-item  { margin-bottom: 0.55rem !important; }
+    .layout-modern  .mp-item  { margin-bottom: 0       !important; }
+
+    .layout-classic .mp-section { margin-bottom: 1.2rem !important; }
+    .layout-elegant .mp-section { margin-bottom: 1.4rem !important; }
+    .layout-modern  .mp-section { margin-bottom: 1.2rem !important; }
+
+    .mp-item-description { margin-top: 0.08rem !important; line-height: 1.3 !important; }
+    .mp-lang-desc        { margin-top: 0.05rem !important; }
+    .mp-ai-row           { margin-top: 0.1rem  !important; gap: 0.14rem !important; }
+    .mp-header           { margin-bottom: 1rem !important; padding-bottom: 0.7rem !important; }
+    .mp-footer           { margin-top: 1.2rem  !important; }
 }
 
 /* ── Screen preview chrome ──────────────────────────────────── */
@@ -337,3 +352,23 @@ html, body {
     .layout-elegant .mp-page-wrapper { padding: 2rem 2.5rem; }
     .layout-modern  .mp-header { margin: -2rem -2.5rem 1.5rem; border-radius: 6px 6px 0 0; }
 }
+
+/* ── Repeating header ───────────────────────────────────────── */
+.repeat-header .mp-header {
+    position: fixed; top: 0; left: 0; right: 0;
+    background: var(--mp-bg); border-bottom: 1.5px solid var(--mp-border);
+    padding: 0.45rem 1.5rem; z-index: 100;
+}
+.repeat-header .mp-doc { margin-top: 5rem; }
+
+/* ── Auto-organize dual table ───────────────────────────────── */
+.mp-dual-table { width: 100%; border-collapse: separate; border-spacing: 1.25rem 0; }
+.mp-dual-col   { width: 50%; vertical-align: top; }
+
+/* ── Section item column modes ──────────────────────────────── */
+/* dual-mode sections: 2-col item grid (all layouts) */
+.mp-section-dual .mp-dual-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1.25rem;
+}
+/* single-mode sections: override modern grid back to 1 col */
+.mp-section-single .mp-items-grid { grid-template-columns: 1fr; }

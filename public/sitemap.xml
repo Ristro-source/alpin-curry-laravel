@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <!-- Home EN -->
+    <url>
+        <loc>https://alpin-curry.it/en</loc>
+        <lastmod>2026-03-02</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="it" href="https://alpin-curry.it/it"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://alpin-curry.it/de"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://alpin-curry.it/en"/>
+    </url>
+    <!-- Home IT -->
+    <url>
+        <loc>https://alpin-curry.it/it</loc>
+        <lastmod>2026-03-02</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <!-- Home DE -->
+    <url>
+        <loc>https://alpin-curry.it/de</loc>
+        <lastmod>2026-03-02</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <!-- Menu EN -->
+    <url>
+        <loc>https://alpin-curry.it/en/menu</loc>
+        <lastmod>2026-03-02</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+</urlset>
