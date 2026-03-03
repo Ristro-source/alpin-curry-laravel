@@ -63,7 +63,7 @@ services:
       # HTTPS Router
       - "traefik.http.routers.alpincurry.rule=Host(`alpincurry.it`) || Host(`www.alpincurry.it`)"
       - "traefik.http.routers.alpincurry.entrypoints=websecure"
-      - "traefik.http.routers.alpincurry.tls.certresolver=lets-encrypt"
+      - "traefik.http.routers.alpincurry.tls.certresolver=letsencrypt"
       - "traefik.http.routers.alpincurry.tls=true"
       - "traefik.http.services.alpincurry.loadbalancer.server.port=80"
       # HTTP to HTTPS Redirect
