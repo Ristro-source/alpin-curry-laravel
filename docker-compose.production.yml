@@ -15,7 +15,12 @@ services:
         PHP_EXT_GD: "true"
         PHP_EXT_IMAGICK: "true"
         PHP_EXT_VIPS: "true"
-#    deploy:
+
+    deploy:
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
+        delay: 30s
 #      resources:
 #        limits:
 #          cpus: '0.50'
