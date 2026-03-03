@@ -7,6 +7,7 @@ use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Navigation\NavigationGroup;
+use Filament\Navigation\NavigationItem;
 use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -28,10 +29,17 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('admin')
-            ->path('admin')
+            ->path('sa-admin')
             ->login()
             ->colors([
                 'primary' => Color::Amber,
+            ])
+            ->navigationItems([
+                NavigationItem::make('Quick Menu Print')
+                    ->url('/sa-admin/quick-menu-print', shouldOpenInNewTab: true)
+                    ->icon('heroicon-o-printer')
+                    ->group('Tools')
+                    ->sort(1),
             ])
             ->navigationGroups([
                 NavigationGroup::make('Menu'),
