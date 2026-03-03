@@ -1,83 +1,16 @@
 /* ═══════════════════════════════════════════════════════════════════════════
-   ALPIN CURRY — 3D & Animation Enhancement Layer
-   Loaded after alpin-curry-site.css. Adds depth, motion & atmosphere.
-   All effects respect prefers-reduced-motion.
+   ALPIN CURRY — Animation Enhancement Layer
+   Loaded after alpin-curry-site.css.
+   All perpetual keyframe animations removed — GSAP (app.js) handles motion.
+   Only one-shot entrance (topbar) and hover/transition effects remain here.
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/* ── Keyframe Library ────────────────────────────────────────────────────── */
-
-@keyframes floatY {
-    0%, 100% { transform: translateY(0px); }
-    50%       { transform: translateY(-10px); }
-}
-
-@keyframes floatOrb {
-    0%, 100% { transform: translateY(0px)  scale(1)    rotate(0deg); }
-    33%       { transform: translateY(-28px) scale(1.07) rotate(120deg); }
-    66%       { transform: translateY(14px)  scale(0.95) rotate(240deg); }
-}
-
-@keyframes floatOrbSlow {
-    0%, 100% { transform: translateY(0px)   scale(1); }
-    40%       { transform: translateY(-18px) scale(1.05); }
-    70%       { transform: translateY(10px)  scale(0.97); }
-}
-
-@keyframes shimmerText {
-    0%   { background-position: 0% center; }
-    100% { background-position: 200% center; }
-}
-
-@keyframes eyebrowGlow {
-    0%, 100% { box-shadow: 0 0  0px 0px color-mix(in srgb, var(--saffron) 0%,  transparent); }
-    50%       { box-shadow: 0 0 18px 4px color-mix(in srgb, var(--saffron) 22%, transparent); }
-}
+/* ── Topbar — slide-down entrance (one-shot, low cost) ───────────────────── */
 
 @keyframes fadeInDown {
     from { opacity: 0; transform: translateY(-20px); }
     to   { opacity: 1; transform: translateY(0); }
 }
-
-@keyframes grain {
-    0%,  100% { transform: translate(0, 0); }
-    10%        { transform: translate(-2%, -3%); }
-    20%        { transform: translate(-5%,  2%); }
-    30%        { transform: translate( 3%, -5%); }
-    40%        { transform: translate(-3%,  4%); }
-    50%        { transform: translate(-1%, -1%); }
-    60%        { transform: translate( 5%,  3%); }
-    70%        { transform: translate( 3%, -2%); }
-    80%        { transform: translate(-4%, -4%); }
-    90%        { transform: translate( 4%,  2%); }
-}
-
-/* ── Subtle animated grain on body overlay ───────────────────────────────── */
-
-body::before {
-    animation: grain 7s steps(1, end) infinite;
-}
-
-/* ── Cursor glow (appended to body by JS) ────────────────────────────────── */
-
-.cursor-glow {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 520px;
-    height: 520px;
-    border-radius: 50%;
-    background: radial-gradient(
-        circle,
-        color-mix(in srgb, var(--saffron) 7%, transparent) 0%,
-        transparent 65%
-    );
-    pointer-events: none;
-    z-index: 0;
-    will-change: transform;
-    mix-blend-mode: multiply;
-}
-
-/* ── Topbar — slide-down entrance ────────────────────────────────────────── */
 
 .topbar {
     animation: fadeInDown 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
@@ -123,7 +56,7 @@ body::before {
     color: var(--brand-deep);
 }
 
-/* ── Hero — atmospheric orbs ─────────────────────────────────────────────── */
+/* ── Hero — static atmospheric orbs (no animation) ───────────────────────── */
 
 .hero {
     position: relative;
@@ -141,10 +74,9 @@ body::before {
     border-radius: 50%;
     background: radial-gradient(
         circle,
-        color-mix(in srgb, var(--saffron) 18%, transparent),
+        color-mix(in srgb, var(--saffron) 16%, transparent),
         transparent 68%
     );
-    animation: floatOrb 9s ease-in-out infinite;
     pointer-events: none;
     z-index: -1;
 }
@@ -160,30 +92,26 @@ body::before {
     border-radius: 50%;
     background: radial-gradient(
         circle,
-        color-mix(in srgb, var(--leaf) 14%, transparent),
+        color-mix(in srgb, var(--leaf) 12%, transparent),
         transparent 68%
     );
-    animation: floatOrbSlow 12s ease-in-out infinite reverse;
     pointer-events: none;
     z-index: -1;
 }
 
-/* ── H1 — gradient shimmer text ──────────────────────────────────────────── */
+/* ── H1 — static gradient text ───────────────────────────────────────────── */
 
 h1 {
     background: linear-gradient(
         115deg,
         var(--brand-deep) 0%,
-        var(--brand)      25%,
-        var(--saffron)    50%,
-        var(--brand)      75%,
+        var(--brand)      40%,
+        var(--saffron)    70%,
         var(--brand-deep) 100%
     );
-    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: shimmerText 5s linear infinite;
 }
 
 /* ── Section h2 — warm gradient ──────────────────────────────────────────── */
@@ -200,17 +128,9 @@ h1 {
     background-clip: text;
 }
 
-/* ── Eyebrow badge — glow pulse ──────────────────────────────────────────── */
-
-.eyebrow {
-    animation: eyebrowGlow 3.5s ease-in-out infinite;
-}
-
-/* ── Hero media — floating animation + 3D feel ───────────────────────────── */
+/* ── Hero media — shadow (GSAP handles the float) ────────────────────────── */
 
 .hero-media {
-    animation: floatY 5.5s ease-in-out infinite;
-    will-change: transform;
     box-shadow:
         var(--shadow),
         0 0 0 1px color-mix(in srgb, var(--brand) 14%, transparent),
@@ -240,7 +160,6 @@ h1 {
         inset 0 1px 0 rgba(255, 255, 255, 0.85);
     transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
                 box-shadow 0.22s ease;
-    will-change: transform;
 }
 
 /* ── Buttons — spring + shimmer ──────────────────────────────────────────── */
@@ -287,44 +206,35 @@ h1 {
     transform: translateY(-3px);
 }
 
-/* ── Menu Grid — 3D perspective container ────────────────────────────────── */
+/* ── Menu cards ──────────────────────────────────────────────────────────── */
 
-.menu-grid {
-    perspective: 1400px;
-}
-
-/* Cards get 3D tilt via JS; these are defaults + transition resets */
 .menu-card {
-    transform-style: preserve-3d;
-    will-change: transform;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    cursor: default;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .menu-card:hover {
     border-color: color-mix(in srgb, var(--saffron) 45%, var(--line) 55%);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px color-mix(in srgb, var(--brand-deep) 16%, transparent);
 }
 
 /* Image zoom on hover */
 .menu-card img {
     transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    will-change: transform;
 }
 
 .menu-card:hover img {
-    transform: scale(1.07);
+    transform: scale(1.05);
 }
 
 /* ── Story section ───────────────────────────────────────────────────────── */
 
 .story-media {
-    will-change: transform;
     overflow: hidden;
 }
 
 .story-media img {
     transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    will-change: transform;
 }
 
 .story-media:hover img {
@@ -351,7 +261,7 @@ h1 {
     color: var(--brand-deep);
 }
 
-/* ── FAQ — smooth accordion ──────────────────────────────────────────────── */
+/* ── FAQ — accordion styles (GSAP animates height/opacity) ───────────────── */
 
 .faq-item {
     transition: border-color 0.25s ease, box-shadow 0.25s ease;
@@ -374,15 +284,7 @@ h1 {
     color: var(--brand);
 }
 
-/* JS wraps the <p> in .faq-content for height transitions */
-.faq-content {
-    overflow: hidden;
-    transition:
-        max-height 0.40s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-        opacity    0.33s ease;
-}
-
-/* ── Contact section — inner glow ────────────────────────────────────────── */
+/* ── Contact section — static inner glow ─────────────────────────────────── */
 
 .contact-wrap {
     position: relative;
@@ -422,7 +324,6 @@ h1 {
 
 .gallery-card img {
     transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    will-change: transform;
 }
 
 .gallery-card:hover img {
@@ -463,29 +364,25 @@ h1 {
 
 /* ── Directional reveal variants ─────────────────────────────────────────── */
 
-/* Existing .reveal = fade up. New directional variants: */
 .reveal-left {
     opacity: 0;
     transform: translateX(-32px);
-    transition:
-        opacity   680ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
-        transform 680ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: opacity 680ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 680ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .reveal-right {
     opacity: 0;
     transform: translateX(32px);
-    transition:
-        opacity   680ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
-        transform 680ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: opacity 680ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 680ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .reveal-scale {
     opacity: 0;
     transform: scale(0.90);
-    transition:
-        opacity   680ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
-        transform 680ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: opacity 680ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 680ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .reveal-left.active,
@@ -509,18 +406,13 @@ h1 {
 .hero-cards .chip:nth-child(2) { transition-delay: 80ms; }
 .hero-cards .chip:nth-child(3) { transition-delay: 160ms; }
 
-/* ── Reduced motion: disable everything ─────────────────────────────────── */
+/* ── Reduced motion: disable everything ──────────────────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {
-    body::before              { animation: none !important; }
-    .hero::before,
-    .hero::after              { animation: none !important; }
-    .hero-media               { animation: none !important; }
-    .topbar                   { animation: none !important; }
-    .eyebrow                  { animation: none !important; }
-    h1                        { animation: none !important; -webkit-text-fill-color: var(--ink); background: none; }
-    .section h2               { -webkit-text-fill-color: var(--brand-deep); background: none; }
-    .cursor-glow              { display: none !important; }
+    .topbar { animation: none !important; }
+
+    h1 { -webkit-text-fill-color: var(--ink); background: none; }
+    .section h2 { -webkit-text-fill-color: var(--brand-deep); background: none; }
 
     .btn,
     .chip,
@@ -530,9 +422,9 @@ h1 {
     .story-points li,
     .lang-link,
     .whatsapp-fab,
-    .nav a                    { transition: none !important; }
+    .nav a { transition: none !important; }
 
     .menu-card img,
     .gallery-card img,
-    .story-media img          { transition: none !important; }
+    .story-media img { transition: none !important; }
 }

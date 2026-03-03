@@ -13,17 +13,33 @@
             <div class="container">
                 <div class="feature-grid">
                     <div class="feature-item reveal" style="transition-delay: 50ms;">
-                        <div class="feature-icon">✨</div>
+                        <div class="feature-icon">
+                            {{-- Sparkles: fresh, high-quality --}}
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" aria-hidden="true">
+                                <path d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z"/>
+                            </svg>
+                        </div>
                         <h3>{{ __('site.features.quality_title') }}</h3>
                         <p>{{ __('site.features.quality_text') }}</p>
                     </div>
                     <div class="feature-item reveal" style="transition-delay: 150ms;">
-                        <div class="feature-icon">🥦</div>
+                        <div class="feature-icon">
+                            {{-- Leaf: vegetarian & vegan --}}
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" aria-hidden="true">
+                                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+                            </svg>
+                        </div>
                         <h3>{{ __('site.features.veg_vegan_title') }}</h3>
                         <p>{{ __('site.features.veg_vegan_text') }}</p>
                     </div>
                     <div class="feature-item reveal" style="transition-delay: 250ms;">
-                        <div class="feature-icon">🍷</div>
+                        <div class="feature-icon">
+                            {{-- Wine glass: bar & drinks --}}
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" aria-hidden="true">
+                                <path d="M8 22h8M7 10h10M12 15v7M17 2H7l2.4 9.6a3 3 0 0 0 5.2 0L17 2Z"/>
+                            </svg>
+                        </div>
                         <h3>{{ __('site.features.bar_drinks_title') }}</h3>
                         <p>{{ __('site.features.bar_drinks_text') }}</p>
                     </div>
@@ -32,27 +48,69 @@
                 {{-- Amenities Icons --}}
                 <div class="amenity-grid reveal" style="transition-delay: 350ms; margin-top: 4rem;">
                     <div class="amenity-item">
-                        <span class="amenity-icon">♿</span>
+                        <span class="amenity-icon">
+                            {{-- Wheelchair: accessible --}}
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" aria-hidden="true">
+                                <circle cx="16" cy="4" r="1.25"/>
+                                <path d="M10 15h3l2-7h-6l-1 4"/>
+                                <path d="M10 15a5 5 0 1 0 5.24 6.07"/>
+                            </svg>
+                        </span>
                         <span>{{ __('site.amenities.accessible') }}</span>
                     </div>
                     <div class="amenity-item">
-                        <span class="amenity-icon">❄️</span>
+                        <span class="amenity-icon">
+                            {{-- Snowflake: air conditioning --}}
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" aria-hidden="true">
+                                <path d="M2 12h20M12 2v20"/>
+                                <path d="m9 3 3 3 3-3M9 21l3-3 3 3M3 9l3 3-3 3M21 9l-3 3 3 3"/>
+                            </svg>
+                        </span>
                         <span>{{ __('site.amenities.ac') }}</span>
                     </div>
                     <div class="amenity-item">
-                        <span class="amenity-icon">🚬</span>
+                        <span class="amenity-icon">
+                            {{-- Cigarette: smoking area --}}
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" aria-hidden="true">
+                                <path d="M18 8c0-2.5-2-2.5-2-5M21 8c0-2.5-2-2.5-2-5"/>
+                                <rect x="2" y="12" width="20" height="4" rx="1"/>
+                                <path d="M18 12v4"/>
+                            </svg>
+                        </span>
                         <span>{{ __('site.amenities.smoking') }}</span>
                     </div>
                     <div class="amenity-item">
-                        <span class="amenity-icon">🥡</span>
+                        <span class="amenity-icon">
+                            {{-- Shopping bag: takeaway --}}
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" aria-hidden="true">
+                                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
+                                <path d="M3 6h18"/>
+                                <path d="M16 10a4 4 0 0 1-8 0"/>
+                            </svg>
+                        </span>
                         <span>{{ __('site.amenities.takeaway') }}</span>
                     </div>
                     <div class="amenity-item">
-                        <span class="amenity-icon">📱</span>
+                        <span class="amenity-icon">
+                            {{-- Smartphone: online ordering --}}
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" aria-hidden="true">
+                                <rect x="5" y="2" width="14" height="20" rx="2"/>
+                                <path d="M12 18h.01"/>
+                            </svg>
+                        </span>
                         <span>{{ __('site.amenities.online_order') }}</span>
                     </div>
                     <div class="amenity-item">
-                        <span class="amenity-icon">🐾</span>
+                        <span class="amenity-icon">
+                            {{-- Paw print: pets welcome --}}
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" aria-hidden="true">
+                                <circle cx="11" cy="4" r="2"/>
+                                <circle cx="18" cy="8" r="2"/>
+                                <circle cx="4" cy="8" r="2"/>
+                                <circle cx="20" cy="16" r="2"/>
+                                <path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z"/>
+                            </svg>
+                        </span>
                         <span>{{ __('site.amenities.pets') }}</span>
                     </div>
                 </div>
