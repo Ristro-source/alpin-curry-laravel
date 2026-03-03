@@ -18,6 +18,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -29,6 +30,7 @@ body {
         radial-gradient(circle at 85% 10%, rgba(47, 93, 75, 0.18), transparent 32%),
         linear-gradient(140deg, #fdf5e8 0%, #f7eddd 48%, #f2e5d2 100%);
     min-height: 100vh;
+    overflow-x: clip;
 }
 
 body::before {

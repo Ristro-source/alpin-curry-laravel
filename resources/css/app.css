@@ -549,8 +549,8 @@ body::before {
         right: 0.95rem;
     }
     .order-fab {
-        width: 3.8rem;
+        width: 2.8rem;
         height: 2.8rem;
-        padding: 0.55rem;
+        padding: 0.45rem;
     }
 }

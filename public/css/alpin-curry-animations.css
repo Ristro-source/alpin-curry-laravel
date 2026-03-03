@@ -61,6 +61,7 @@
 .hero {
     position: relative;
     isolation: isolate;
+    overflow: hidden;
 }
 
 /* Warm saffron orb — upper right */
