@@ -146,7 +146,7 @@
                         </article>
                     @empty
                         <article class="menu-card reveal">
-                            <img src="{{ asset('assets/images/dishes/image.png') }}" alt="{{ __('site.brand') }} - Indian Cuisine Merano">
+                            <img src="{{ asset('assets/images/dishes/rise-with-curries.png') }}" alt="{{ __('site.brand') }} - Indian Cuisine Merano">
                             <div class="menu-card-body">
                                 <h3>{{ __('site.brand') }}</h3>
                                 <p>{{ __('site.menu_page.empty') }}</p>
