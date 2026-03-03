@@ -1,8 +1,0 @@
-
-**/logs/*
-
-supervisord.pid
-.tmp/
-tmp
-.DS_Store
-**/.container-history
