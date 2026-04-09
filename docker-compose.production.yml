@@ -1,7 +1,7 @@
 services:
   app:
     user: "0:0"
-    container_name: alpincurry
+    container_name: ${APP_SERVICE_NAME:-peak-app}
     build:
       context: .
       dockerfile: .docker/v2/php/8.4/nginx/Dockerfile
