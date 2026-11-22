@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Menu · Alpin Curry</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Il menu di Alpin Curry: cucina indiana autentica. Menu · Speisekarte · Menu.">
+<meta name="theme-color" content="#120d0a">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Eczar:wght@600;800&family=Playball&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script type="importmap">
+{"imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+}}
+</script>
+</head>
+<body>
+<canvas id="scene" aria-hidden="true"></canvas>
+<div id="defs" hidden></div>
+
+<header class="site-head">
+  <a class="brand" href="#top" aria-label="Alpin Curry"><img src="assets/logo.png" alt="Alpin Curry"></a>
+  <div class="langs" role="group" aria-label="Lingua · Language · Sprache">
+    <button data-lang="it"><img src="assets/flag-it.png" alt="">IT</button>
+    <button data-lang="en"><img src="assets/flag-en.png" alt="">EN</button>
+    <button data-lang="de"><img src="assets/flag-de.png" alt="">DE</button>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <img class="hero-logo" src="assets/logo.png" alt="Alpin Curry">
+  <div class="orn"><span></span><i></i><span></span></div>
+  <h1 class="script">Menu</h1>
+  <p class="langline">Menù · Speisekarte · Menu</p>
+  <p class="journey" data-t="journey"></p>
+  <div class="cta">
+    <button class="btn gold" data-guide="0" data-t="build"></button>
+    <a class="btn ghost" href="#combos" data-t="combos"></a>
+    <div class="links"><a href="#starters" data-t="browse"></a><span>·</span><button class="link3d" data-open3d data-t="view3d"></button></div>
+  </div>
+  <a class="cue" href="#menu" aria-label="Menu"><span></span></a>
+</section>
+
+<nav class="cats" aria-label="Menu"></nav>
+
+<main id="menu"></main>
+
+<section class="legend" id="allergens">
+  <svg class="corner tl"><use href="#mandala"/></svg>
+  <svg class="corner br"><use href="#mandala"/></svg>
+  <h2 data-t="legend"></h2>
+  <div class="lgrid"></div>
+  <p class="lspicy"><img src="assets/chilli.png" alt=""> <span data-t="spicyLong"></span></p>
+  <p class="lnote" data-t="note"></p>
+  <p class="lnote" data-t="photo"></p>
+</section>
+
+<footer class="site-foot">
+  <img src="assets/logo.png" alt="Alpin Curry">
+  <p class="thanks">Grazie · Thank you · Danke</p>
+  <a class="back" href="https://alpincurry.it" data-t="back"></a>
+  <details class="credits"><summary data-t="credits"></summary><ul></ul></details>
+  <small>© 2026 Alpin Curry</small>
+</footer>
+
+<div class="viewer" hidden role="dialog" aria-modal="true">
+  <div class="v-top">
+    <div><h2 class="v-cat"></h2><p class="v-sub"></p></div>
+    <button class="v-close" aria-label="Chiudi">×</button>
+    <nav class="v-cats" aria-label="Menu"></nav>
+  </div>
+  <button class="arrow prev" aria-label="‹">‹</button>
+  <button class="arrow next" aria-label="›">›</button>
+  <section class="card" aria-live="polite">
+    <div class="dish">
+      <div class="row"><h3 class="name"></h3><span class="dots"></span><span class="price"></span></div>
+      <div class="tags"></div>
+      <p class="desc"></p>
+      <p class="note"></p>
+      <div class="pair"></div>
+      <details class="story"><summary></summary><p></p></details>
+      <div class="alg"></div>
+    </div>
+    <div class="ctrl"><span class="count"></span><span class="slot"></span></div>
+    <p class="photo-mini" data-t="photo"></p>
+  </section>
+</div>
+
+<div class="toast" hidden role="status"></div>
+
+<div class="bar" hidden>
+  <button class="bar-open"><span class="bar-steps"></span><span class="bar-count"></span><span class="bar-cta"></span></button>
+</div>
+
+<div class="sheet" hidden role="dialog" aria-modal="true">
+  <div class="sheet-panel">
+    <div class="sheet-head"></div>
+    <div class="sheet-body"></div>
+    <div class="sheet-foot"></div>
+  </div>
+</div>
+
+<div class="waiter" hidden role="dialog" aria-modal="true">
+  <button class="waiter-x" aria-label="×">×</button>
+  <div class="waiter-body"></div>
+</div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
