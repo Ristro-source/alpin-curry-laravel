@@ -476,8 +476,8 @@ export default {
     {
      "id": "starters:0",
      "name": "Vegetable Samosa",
-     "price": "6.50 €",
-     "p": 6.5,
+     "price": "7 €",
+     "p": 7.0,
      "hot": 0,
      "pair": "Prosecco",
      "desc": {
@@ -512,7 +512,7 @@ export default {
       "1",
       "7"
      ],
-     "img": "assets/dishes/aloo-tikki.webp",
+     "img": "assets/dishes/plate-aloo-tikki.webp",
      "course": "starter",
      "story": "tikki",
      "veg": true,
@@ -1237,7 +1237,7 @@ export default {
      "al": [
       "2"
      ],
-     "img": "assets/dishes/prawn-curry.webp",
+     "img": "assets/dishes/plate-prawn-masala.webp",
      "course": "main",
      "story": "jhinga",
      "veg": false,
@@ -1329,9 +1329,9 @@ export default {
      "hot": 0,
      "pair": "Mango Lassi",
      "desc": {
-      "it": "Paneer fritto con farina di mais, saltato con peperoni in una salsa agrodolce e piccante.",
-      "en": "Paneer fried in cornflour, tossed with bell peppers in a sweet, sour and spicy sauce.",
-      "de": "Paneer in Maismehl frittiert, mit Paprika in einer süß-sauren und scharfen Sauce gebraten."
+      "it": "Paneer saltato con peperoni in una salsa agrodolce e piccante.",
+      "en": "Paneer tossed with bell peppers in a sweet, sour and spicy sauce.",
+      "de": "Paneer mit Paprika in einer süß-sauren und scharfen Sauce gebraten."
      },
      "note": "",
      "al": [
@@ -1384,7 +1384,7 @@ export default {
       "7",
       "8"
      ],
-     "img": null,
+     "img": "assets/dishes/plate-paneer-makhani.webp",
      "course": "main",
      "story": "butter",
      "veg": true,
@@ -1404,7 +1404,7 @@ export default {
      },
      "note": "",
      "al": [],
-     "img": "assets/dishes/rajma.webp",
+     "img": "assets/dishes/plate-rajma.webp",
      "course": "main",
      "story": "rajma",
      "veg": true,
@@ -1488,7 +1488,7 @@ export default {
      "al": [
       "7"
      ],
-     "img": "assets/dishes/methi-aloo.webp",
+     "img": "assets/dishes/plate-shahi-aloo.webp",
      "course": "main",
      "story": "methi",
      "veg": true,
@@ -1531,7 +1531,7 @@ export default {
       "1",
       "6"
      ],
-     "img": "assets/dishes/chaap-curry.webp",
+     "img": "assets/dishes/plate-chaap-curry.webp",
      "course": "main",
      "story": "chaap",
      "veg": true,
@@ -2004,11 +2004,11 @@ export default {
      "hot": 0,
      "pair": "",
      "desc": {
-      "it": "Palline dolci a base di semolino, servite calde con il gelato.",
-      "en": "Sweet semolina dumplings, served warm with ice cream.",
-      "de": "Süße Grießbällchen, warm serviert mit Eis."
+      "it": "«Freddo e caldo»: palline dolci di semolino servite calde, con una pallina di gelato freddo.",
+      "en": "“Cold and hot”: sweet semolina dumplings served warm with a scoop of cold ice cream.",
+      "de": "„Kalt und warm“: süße Grießbällchen, warm serviert mit einer Kugel kaltem Eis."
      },
-     "note": "Freddo e caldo",
+     "note": "",
      "al": [
       "1",
       "7"
@@ -2027,9 +2027,9 @@ export default {
      "hot": 0,
      "pair": "",
      "desc": {
-      "it": "Dolce tradizionale a base di carote, latte, zucchero e frutta secca.",
-      "en": "Traditional dessert made with carrots, milk, sugar and nuts.",
-      "de": "Traditionelles Dessert aus Karotten, Milch, Zucker und Nüssen."
+      "it": "Dolce tradizionale indiano di carote grattugiate cotte lentamente nel latte con zucchero, guarnito con frutta secca.",
+      "en": "Traditional Indian dessert of grated carrots slow-cooked in milk with sugar, topped with nuts.",
+      "de": "Traditionelles indisches Dessert aus geriebenen Karotten, langsam in Milch mit Zucker gekocht, mit Nüssen garniert."
      },
      "note": "",
      "al": [
@@ -2050,9 +2050,9 @@ export default {
      "hot": 0,
      "pair": "",
      "desc": {
-      "it": "",
-      "en": "",
-      "de": ""
+      "it": "Mousse soffice e fresca al mango.",
+      "en": "Light, fresh mango mousse.",
+      "de": "Leichte, frische Mangomousse."
      },
      "note": "",
      "al": [
@@ -2072,9 +2072,9 @@ export default {
      "hot": 0,
      "pair": "",
      "desc": {
-      "it": "",
-      "en": "",
-      "de": ""
+      "it": "Naan caldo dal tandoor, farcito con Nutella.",
+      "en": "Warm naan from the tandoor, filled with Nutella.",
+      "de": "Warmes Naan aus dem Tandoor, gefüllt mit Nutella."
      },
      "note": "",
      "al": [
@@ -2394,6 +2394,29 @@ export default {
      "story": null
     },
     {
+     "name": "Merlot",
+     "prices": [
+      "5 €",
+      "26 €"
+     ],
+     "note": "",
+     "al": [],
+     "opts": [
+      {
+       "l": "glass",
+       "p": 5.0,
+       "id": "d:1:2:0"
+      },
+      {
+       "l": "bottle",
+       "p": 26.0,
+       "id": "d:1:2:1"
+      }
+     ],
+     "pick": false,
+     "story": null
+    },
+    {
      "name": "St. Magdalener",
      "prices": [
       "4 €",
@@ -2405,12 +2428,12 @@ export default {
       {
        "l": "glass",
        "p": 4.0,
-       "id": "d:1:2:0"
+       "id": "d:1:3:0"
       },
       {
        "l": "bottle",
        "p": 22.0,
-       "id": "d:1:2:1"
+       "id": "d:1:3:1"
       }
      ],
      "pick": false,
@@ -2428,12 +2451,12 @@ export default {
       {
        "l": "glass",
        "p": 4.5,
-       "id": "d:1:3:0"
+       "id": "d:1:4:0"
       },
       {
        "l": "bottle",
        "p": 24.0,
-       "id": "d:1:3:1"
+       "id": "d:1:4:1"
       }
      ],
      "pick": false,
@@ -2451,7 +2474,7 @@ export default {
       {
        "l": "bottle",
        "p": 32.0,
-       "id": "d:1:4:0"
+       "id": "d:1:5:0"
       }
      ],
      "pick": false,
@@ -2469,7 +2492,7 @@ export default {
       {
        "l": "bottle",
        "p": 50.0,
-       "id": "d:1:5:0"
+       "id": "d:1:6:0"
       }
      ],
      "pick": false,
@@ -3994,17 +4017,6 @@ export default {
  "credits": [
   {
    "dishes": [
-    "Aloo Tikki"
-   ],
-   "creator": "Sonia Goyal Jaipur",
-   "license": "by-sa",
-   "version": "2.0",
-   "source": "https://www.flickr.com/photos/115727405@N06/25154602981",
-   "title": "Aloo tikki recipe by Sonia Goyal",
-   "img": "aloo-tikki"
-  },
-  {
-   "dishes": [
     "Butter Naan"
    ],
    "creator": "Bigul Malayi",
@@ -4123,17 +4135,6 @@ export default {
    "source": "https://www.flickr.com/photos/72949902@N00/4944774285",
    "title": "Chicken Korma",
    "img": "lamb-korma"
-  },
-  {
-   "dishes": [
-    "Shahi Methi Aloo"
-   ],
-   "creator": "Charles Haynes",
-   "license": "by-sa",
-   "version": "2.0",
-   "source": "https://www.flickr.com/photos/87232391@N00/1547100087",
-   "title": "Aloo methi?",
-   "img": "methi-aloo"
   },
   {
    "dishes": [
