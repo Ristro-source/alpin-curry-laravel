@@ -626,7 +626,7 @@ export default {
       "7",
       "10"
      ],
-     "img": "assets/dishes/achari-wings.webp",
+     "img": null,
      "course": "starter",
      "story": "achari",
      "veg": false,
@@ -894,7 +894,7 @@ export default {
       "7",
       "8"
      ],
-     "img": "assets/dishes/chicken-korma.webp",
+     "img": null,
      "course": "main",
      "story": "korma",
      "veg": false,
@@ -1003,7 +1003,7 @@ export default {
       "3",
       "6"
      ],
-     "img": "assets/dishes/chilli-chicken.webp",
+     "img": null,
      "course": "main",
      "story": "indochinese",
      "veg": false,
@@ -1260,7 +1260,7 @@ export default {
       "2",
       "8"
      ],
-     "img": "assets/dishes/prawn-plate.webp",
+     "img": null,
      "course": "main",
      "story": "korma",
      "veg": false,
@@ -1339,7 +1339,7 @@ export default {
       "6",
       "7"
      ],
-     "img": "assets/dishes/cheese-chilli.webp",
+     "img": null,
      "course": "main",
      "story": "indochinese",
      "veg": true,
@@ -4028,17 +4028,6 @@ export default {
   },
   {
    "dishes": [
-    "Cheese Chilli"
-   ],
-   "creator": "ravimadhuscooking",
-   "license": "by",
-   "version": "2.0",
-   "source": "https://www.flickr.com/photos/153337965@N04/45618793141",
-   "title": "Chilli Paneer",
-   "img": "cheese-chilli"
-  },
-  {
-   "dishes": [
     "Cheese Naan"
    ],
    "creator": "joegoauk73",
@@ -4050,17 +4039,6 @@ export default {
   },
   {
    "dishes": [
-    "Chicken Korma"
-   ],
-   "creator": "abbamouse",
-   "license": "by-sa",
-   "version": "2.0",
-   "source": "https://www.flickr.com/photos/92329419@N00/8378934945",
-   "title": "Lamb Korma at the Clay Oven",
-   "img": "chicken-korma"
-  },
-  {
-   "dishes": [
     "Chicken Tikka"
    ],
    "creator": "Graham Steel",
@@ -4069,17 +4047,6 @@ export default {
    "source": "https://www.flickr.com/photos/7914713@N05/35550301984",
    "title": "Chicken Tikka",
    "img": "chicken-tikka"
-  },
-  {
-   "dishes": [
-    "Chilli Chicken"
-   ],
-   "creator": "avlxyz",
-   "license": "by-sa",
-   "version": "2.0",
-   "source": "https://www.flickr.com/photos/10559879@N00/2403237498",
-   "title": "干香辣子鸡 Sichuan Chilli Chicken - Original Taste",
-   "img": "chilli-chicken"
   },
   {
    "dishes": [
