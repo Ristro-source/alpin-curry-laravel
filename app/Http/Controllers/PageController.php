@@ -40,8 +40,7 @@ class PageController extends Controller
     public function menu(): View
     {
         return view('pages.menu', [
-            'menuSections' => $this->menuCatalogService->getMenuByLocale(app()->getLocale()),
-            'dietary' => $this->menuCatalogService->getDietaryByLocale(app()->getLocale()),
+            'pages' => array_map('basename', glob(public_path('menu/pages/*.jpg')) ?: []),
         ]);
     }
 

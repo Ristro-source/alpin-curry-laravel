@@ -131,8 +131,11 @@ return [
         'map_note' => 'In the heart of Merano. Perfect stop before or after a city walk.',
     ],
     'menu_page' => [
-        'title' => 'Full Menu',
-        'subtitle' => 'Explore our complete selection. Updated from our menu source with fallback for reliability.',
+        'title' => 'Our Menu',
+        'subtitle' => 'Scroll through the full menu, or download it as PDF.',
+        'download' => 'Download menu (PDF)',
+        'desserts_pdf' => 'Desserts (PDF)',
+        'page_alt' => 'Menu page',
         'quick_nav_title' => 'Jump to category',
         'quick_nav_aria' => 'Quick menu category navigation',
         'food_title' => 'Food Categories',

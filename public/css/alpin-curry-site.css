@@ -1072,3 +1072,8 @@ h1 {
         transition-duration: 0.001ms !important;
     }
 }
+
+.menu-pdf-actions { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; margin-top: 1rem; }
+.menu-pdf-pages { display: flex; flex-direction: column; align-items: center; gap: .5rem; padding: 0 0 3rem; }
+.menu-pdf-pages img { display: block; width: 100%; max-width: 900px; height: auto; background: #17120e; }
+@media (min-width: 900px) { .menu-pdf-pages { gap: 1.2rem; } .menu-pdf-pages img { border-radius: 6px; box-shadow: 0 10px 30px rgba(0, 0, 0, .35); } }

@@ -131,8 +131,11 @@ return [
         'map_note' => 'Nel cuore di Merano. Fermata perfetta prima o dopo una passeggiata in citta.',
     ],
     'menu_page' => [
-        'title' => 'Menu Completo',
-        'subtitle' => 'Esplora tutta la selezione. Aggiornato dalla nostra fonte menu con fallback affidabile.',
+        'title' => 'Il nostro menù',
+        'subtitle' => 'Scorri il menù completo oppure scaricalo in PDF.',
+        'download' => 'Scarica il menù (PDF)',
+        'desserts_pdf' => 'Dolci (PDF)',
+        'page_alt' => 'Pagina del menù',
         'quick_nav_title' => 'Vai alla categoria',
         'quick_nav_aria' => 'Navigazione rapida categorie menu',
         'food_title' => 'Categorie Cibo',

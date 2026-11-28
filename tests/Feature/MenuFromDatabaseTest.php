@@ -11,57 +11,16 @@ class MenuFromDatabaseTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_menu_page_uses_database_categories_and_items_grouped_by_type(): void
+    public function test_menu_page_shows_pdf_pages_and_download_links(): void
     {
-        config()->set('services.menu.endpoint', '');
-
-        $foodCategory = FoodMenuCategory::create([
-            'name' => 'Chef Test Main',
-            'type' => 'food',
-            'status' => 'active',
-            'order' => 1,
-            'description_en' => 'Food category from database.',
-        ]);
-
-        FoodMenuItem::create([
-            'food_menu_category_id' => $foodCategory->id,
-            'name' => 'DB Test Curry',
-            'description_en' => 'Slow-cooked test curry.',
-            'price' => '€12.00',
-            'status' => 'active',
-            'order' => 1,
-        ]);
-
-        $drinkCategory = FoodMenuCategory::create([
-            'name' => 'Chef Test Drinks',
-            'type' => 'drink',
-            'status' => 'active',
-            'order' => 2,
-            'description_en' => 'Drink category from database.',
-        ]);
-
-        FoodMenuItem::create([
-            'food_menu_category_id' => $drinkCategory->id,
-            'name' => 'DB Test Cola',
-            'description_en' => 'Cold soft drink.',
-            'price' => '€3.50',
-            'status' => 'active',
-            'order' => 1,
-        ]);
-
-        $response = $this->get('/en/menu');
-
-        $response
+        $this->get('/en/menu')
             ->assertStatus(200)
-            ->assertSeeText('Jump to category')
-            ->assertSeeText('Food Categories')
-            ->assertSeeText('Drink Categories')
-            ->assertSeeText('Chef Test Main')
-            ->assertSeeText('DB Test Curry')
-            ->assertSeeText('Chef Test Drinks')
-            ->assertSeeText('DB Test Cola')
-            ->assertSee('href="#food-chef-test-main-1"', false)
-            ->assertSee('href="#drink-chef-test-drinks-1"', false);
+            ->assertSee('menu/AlpinCurry_Menu.pdf?v=', false)
+            ->assertSee('menu/AlpinCurry_Desserts.pdf?v=', false)
+            ->assertSee('menu/pages/menu-01.jpg', false)
+            ->assertSee('menu/pages/menu-12.jpg', false)
+            ->assertSee('menu/pages/desserts-1.jpg', false)
+            ->assertSeeText('Download menu (PDF)');
     }
 
     public function test_home_featured_menu_excludes_drink_only_items_when_food_exists(): void

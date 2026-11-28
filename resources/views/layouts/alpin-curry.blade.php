@@ -189,7 +189,7 @@
     <link rel="icon" href="{{ asset($restaurantBrand['favicon_path'] ?? 'favicon.ico') }}" sizes="any">    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset($restaurantBrand['favicon_32_path'] ?? 'favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset($restaurantBrand['favicon_16_path'] ?? 'favicon-16x16.png') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset($restaurantBrand['apple_touch_icon_path'] ?? 'apple-touch-icon.png') }}">
-    <link rel="stylesheet" href="{{ asset('css/alpin-curry-site.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/alpin-curry-site.css') }}?v={{ filemtime(public_path('css/alpin-curry-site.css')) }}">
     <link rel="stylesheet" href="{{ asset('css/alpin-curry-animations.css') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
