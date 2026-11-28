@@ -40,7 +40,7 @@ class PageController extends Controller
     public function menu(): View
     {
         return view('pages.menu', [
-            'pages' => array_map('basename', glob(public_path('menu/pages/*.jpg')) ?: []),
+            'pages' => array_map('basename', [...glob(public_path('menu/pages/menu-*.jpg')), ...glob(public_path('menu/pages/desserts-*.jpg'))]),
         ]);
     }
 
