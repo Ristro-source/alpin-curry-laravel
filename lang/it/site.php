@@ -132,9 +132,9 @@ return [
     ],
     'menu_page' => [
         'title' => 'Il nostro menù',
-        'subtitle' => 'Scorri il menù completo oppure scaricalo in PDF.',
-        'download' => 'Scarica il menù (PDF)',
-        'desserts_pdf' => 'Dolci (PDF)',
+        'subtitle' => 'Scorri qui sotto il nostro menù completo.',
+        'view_menu' => 'Visualizza menù',
+        'view_desserts' => 'Visualizza dolci',
         'page_alt' => 'Pagina del menù',
         'quick_nav_title' => 'Vai alla categoria',
         'quick_nav_aria' => 'Navigazione rapida categorie menu',

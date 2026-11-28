@@ -11,14 +11,14 @@ class MenuFromDatabaseTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_menu_page_shows_pdf_pages_and_download_links(): void
+    public function test_menu_page_shows_menu_pages_with_view_links(): void
     {
         $this->get('/en/menu')
             ->assertStatus(200)
-            ->assertSee('menu/AlpinCurry_Menu.pdf?v=', false)
-            ->assertSee('menu/AlpinCurry_Desserts.pdf?v=', false)
+            ->assertSee('href="#menu-pages"', false)
+            ->assertSee('id="menu-desserts"', false)
             ->assertSeeInOrder(['menu/pages/menu-01.jpg', 'menu/pages/menu-12.jpg', 'menu/pages/desserts-1.jpg'], false)
-            ->assertSeeText('Download menu (PDF)');
+            ->assertSeeText('View menu');
     }
 
     public function test_home_featured_menu_excludes_drink_only_items_when_food_exists(): void

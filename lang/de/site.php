@@ -132,9 +132,9 @@ return [
     ],
     'menu_page' => [
         'title' => 'Unsere Speisekarte',
-        'subtitle' => 'Blättern Sie durch die ganze Speisekarte oder laden Sie sie als PDF herunter.',
-        'download' => 'Speisekarte herunterladen (PDF)',
-        'desserts_pdf' => 'Desserts (PDF)',
+        'subtitle' => 'Scrollen Sie unten durch unsere ganze Speisekarte.',
+        'view_menu' => 'Speisekarte ansehen',
+        'view_desserts' => 'Desserts ansehen',
         'page_alt' => 'Speisekarte Seite',
         'quick_nav_title' => 'Zur Kategorie springen',
         'quick_nav_aria' => 'Schnellnavigation fuer Menukategorien',

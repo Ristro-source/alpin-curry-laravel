@@ -132,9 +132,9 @@ return [
     ],
     'menu_page' => [
         'title' => 'Our Menu',
-        'subtitle' => 'Scroll through the full menu, or download it as PDF.',
-        'download' => 'Download menu (PDF)',
-        'desserts_pdf' => 'Desserts (PDF)',
+        'subtitle' => 'Scroll through our full menu below.',
+        'view_menu' => 'View menu',
+        'view_desserts' => 'View desserts',
         'page_alt' => 'Menu page',
         'quick_nav_title' => 'Jump to category',
         'quick_nav_aria' => 'Quick menu category navigation',
