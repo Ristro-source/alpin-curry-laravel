@@ -134,6 +134,7 @@ return [
         'title' => 'Il nostro menù',
         'subtitle' => 'Scorri qui sotto il nostro menù completo.',
         'view_menu' => 'Visualizza menù',
+        'open_pdf' => 'Apri il menù in PDF',
         'view_desserts' => 'Visualizza dolci',
         'page_alt' => 'Pagina del menù',
         'quick_nav_title' => 'Vai alla categoria',

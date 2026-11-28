@@ -17,6 +17,7 @@ class MenuFromDatabaseTest extends TestCase
             ->assertStatus(200)
             ->assertSee('href="#menu-pages"', false)
             ->assertSee('id="menu-desserts"', false)
+            ->assertSee('menu/AlpinCurry_Menu.pdf?v=', false)
             ->assertSeeInOrder(['menu/pages/menu-01.jpg', 'menu/pages/menu-12.jpg', 'menu/pages/desserts-1.jpg'], false)
             ->assertSeeText('View menu');
     }

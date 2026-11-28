@@ -13,6 +13,7 @@
                 <x-ui.button href="#menu-pages">{{ __('site.menu_page.view_menu') }}</x-ui.button>
                 <x-ui.button variant="ghost" href="#menu-desserts">{{ __('site.menu_page.view_desserts') }}</x-ui.button>
             </div>
+            <p class="menu-pdf-link"><a href="{{ asset('menu/AlpinCurry_Menu.pdf') }}?v={{ filemtime(public_path('menu/AlpinCurry_Menu.pdf')) }}" target="_blank" rel="noopener">{{ __('site.menu_page.open_pdf') }}</a></p>
         </section>
 
         <section id="menu-pages" class="menu-pdf-pages">

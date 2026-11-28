@@ -134,6 +134,7 @@ return [
         'title' => 'Our Menu',
         'subtitle' => 'Scroll through our full menu below.',
         'view_menu' => 'View menu',
+        'open_pdf' => 'Open menu PDF',
         'view_desserts' => 'View desserts',
         'page_alt' => 'Menu page',
         'quick_nav_title' => 'Jump to category',

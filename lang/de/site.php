@@ -134,6 +134,7 @@ return [
         'title' => 'Unsere Speisekarte',
         'subtitle' => 'Scrollen Sie unten durch unsere ganze Speisekarte.',
         'view_menu' => 'Speisekarte ansehen',
+        'open_pdf' => 'Speisekarte als PDF öffnen',
         'view_desserts' => 'Desserts ansehen',
         'page_alt' => 'Speisekarte Seite',
         'quick_nav_title' => 'Zur Kategorie springen',
